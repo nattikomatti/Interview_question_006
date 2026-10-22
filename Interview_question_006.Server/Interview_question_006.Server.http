@@ -1,0 +1,21 @@
+@Interview_question_006.Server_HostAddress = http://localhost:5234
+
+GET {{Interview_question_006.Server_HostAddress}}/api/products
+Accept: application/json
+
+###
+
+POST {{Interview_question_006.Server_HostAddress}}/api/products
+Content-Type: application/json
+
+{ "productCode": "ABCD-1234-EFGH-5678" }
+
+###
+
+GET {{Interview_question_006.Server_HostAddress}}/api/products/1/barcode
+
+###
+
+DELETE {{Interview_question_006.Server_HostAddress}}/api/products/1
+
+###

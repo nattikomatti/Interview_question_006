@@ -1,0 +1,10 @@
+<div class="backdrop" (click)="cancelled.emit()"></div>
+<div class="dialog" role="alertdialog" aria-modal="true" aria-labelledby="confirm-message">
+  <p id="confirm-message">{{ message() }}</p>
+  <div class="actions">
+    <button type="button" class="btn-confirm" (click)="confirmed.emit()" autofocus>
+      {{ confirmText() }}
+    </button>
+    <button type="button" class="btn-cancel" (click)="cancelled.emit()">{{ cancelText() }}</button>
+  </div>
+</div>

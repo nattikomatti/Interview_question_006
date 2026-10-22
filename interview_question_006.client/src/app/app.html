@@ -1,0 +1,63 @@
+﻿<header class="title-bar">{{ title }}</header>
+
+<main class="content">
+  <form class="add-form" (ngSubmit)="add()">
+    <label for="productCode">รหัสสินค้า</label>
+    <input
+      id="productCode"
+      name="productCode"
+      type="text"
+      autocomplete="off"
+      maxlength="19"
+      placeholder="XXXX-XXXX-XXXX-XXXX"
+      [value]="productCode()"
+      (input)="onCodeInput($event)"
+    />
+    <button type="submit" class="btn-add" [disabled]="saving()">ADD</button>
+  </form>
+
+  @if (error()) {
+    <p class="error" role="alert">{{ error() }}</p>
+  }
+
+  <table class="product-table">
+    <thead>
+      <tr>
+        <th class="col-id">Id</th>
+        <th class="col-code">รหัสสินค้า (16 หลัก)</th>
+        <th>บาร์โค้ดสินค้า</th>
+        <th class="col-action">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products(); track product.id; let i = $index) {
+        <tr>
+          <td>{{ i + 1 }}</td>
+          <td>{{ product.productCode }}</td>
+          <td>
+            <img
+              class="barcode"
+              [src]="barcodeUrl(product)"
+              [alt]="'Barcode ' + product.productCode"
+            />
+          </td>
+          <td>
+            <button type="button" class="btn-delete" (click)="askDelete(product)">ลบ</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td colspan="4" class="empty">ยังไม่มีข้อมูล</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</main>
+
+@if (pendingDelete(); as product) {
+  <app-confirm-dialog
+    [message]="deleteMessage(product)"
+    (confirmed)="confirmDelete()"
+    (cancelled)="cancelDelete()"
+  />
+}

@@ -1,0 +1,11 @@
+<Solution>
+  <Project Path="Interview_question_006.Application/Interview_question_006.Application.csproj" />
+  <Project Path="interview_question_006.client/interview_question_006.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="Interview_question_006.Domain/Interview_question_006.Domain.csproj" />
+  <Project Path="Interview_question_006.Infrastructure/Interview_question_006.Infrastructure.csproj" />
+  <Project Path="Interview_question_006.Server/Interview_question_006.Server.csproj" />
+  <Project Path="Interview_question_006.Tests/Interview_question_006.Tests.csproj" />
+</Solution>
